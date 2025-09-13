@@ -4,25 +4,25 @@ import { Button } from "@/components/ui/button";
 const AlumniHighlights = () => {
   const alumni = [
     {
-      name: "Dr. Sarah Johnson",
-      year: "Class of 1995",
-      achievement: "Leading Researcher in Environmental Science",
-      description: "Pioneering climate change research and sustainable development initiatives.",
-      image: "https://images.unsplash.com/photo-1494790108755-2616b612b691?w=400&h=400&fit=crop&crop=face"
+      name: "Dr. Dharmendra Sarmah",
+      year: "Class of 1978",
+      achievement: "Retired HoD, Department of Chemistry, Darrang College, Tezpur",
+      description: "Led the Chemistry Department at Darrang College, Tezpur, overseeing academic programs, mentoring faculty and students, and contributing to the department’s growth until retirement.",
+      image: "https://darrangcollege.ac.in/upload/alumni_member/1717869360.jpg"
     },
     {
-      name: "Prof. Rajesh Kumar",
-      year: "Class of 1988",
-      achievement: "Distinguished Professor of Mathematics",
-      description: "Internationally recognized for contributions to pure mathematics and number theory.",
-      image: "https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=400&h=400&fit=crop&crop=face"
+      name: "Namita Bora",
+      year: "Class of 2002",
+      achievement: "ACS",
+      description: "Contributing to public administration, policy implementation, and governance for the development of the state.",
+      image: "https://darrangcollege.ac.in/upload/alumni_member/1717867664.jpg"
     },
     {
-      name: "Ms. Priya Sharma",
-      year: "Class of 2003",
-      achievement: "Social Entrepreneur & Philanthropist",
-      description: "Founder of multiple NGOs focusing on education and women empowerment.",
-      image: "https://images.unsplash.com/photo-1438761681033-6461ffad8d80?w=400&h=400&fit=crop&crop=face"
+      name: "Mr. Apurba Saikia",
+      year: "Class of 1978",
+      achievement: "Engineer and Architect of Darrang College Alumni Gallery",
+      description: "Designed and developed the Darrang College Alumni Gallery as the Engineer and Architect, overseeing planning, implementation, and ensuring a functional and engaging space for alumni interactions.",
+      image: "https://darrangcollege.ac.in/upload/alumni_member/1717867954.jpg"
     }
   ];
 
