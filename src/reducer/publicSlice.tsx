@@ -9,7 +9,8 @@ export const fetchAllEvents = createAsyncThunk(
   async (_, { rejectWithValue }) => {
     try {
       // ✅ Correct endpoint
-      const response = await axios.get(`${import.meta.env.VITE_API_BASE_URL}/public/events`);
+      const response = await axios.get(`https://dorrangcollege.onrender.com/api/public/events`);
+      // const response = await axios.get(`${import.meta.env.VITE_API_BASE_URL}/public/events`);
       return response.data; // expecting an array of events
     } catch (error) {
       if (axios.isAxiosError(error)) {
