@@ -154,7 +154,7 @@ export default function DarrangCollegeAlumniSubscriptionFinal() {
 
     try {
       const { data } = await axios.post(
-        "http://localhost:8000/api/payments/create-order",
+        `${import.meta.env.VITE_API_BASE_URL}/payments/create-order`,
         { amount, donation_id: selectedPlan.donation_id },
         { headers: { Authorization: `Bearer ${token}` } }
       );
@@ -173,7 +173,7 @@ export default function DarrangCollegeAlumniSubscriptionFinal() {
         handler: async (response: any) => {
           try {
             const verifyRes = await axios.post(
-              "http://localhost:8000/api/payments/verify",
+            ` ${import.meta.env.VITE_API_BASE_URL}/payments/verify`,
               response,
               { headers: { Authorization: `Bearer ${token}` } }
             );

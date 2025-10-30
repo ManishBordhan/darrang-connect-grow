@@ -45,7 +45,7 @@ export const fetchAlumniDetails = createAsyncThunk(
   "alumniDetails/fetchAlumniDetails",
   async (id: number) => {
     const token = localStorage.getItem("auth_token"); // get your JWT
-    const response = await axios.get(`http://localhost:8000/api/alumni/${id}`, {
+    const response = await axios.get(`${import.meta.env.VITE_API_BASE_URL}/alumni/${id}`, {
       headers: {
         Authorization: `Bearer ${token}`, // attach token
       },

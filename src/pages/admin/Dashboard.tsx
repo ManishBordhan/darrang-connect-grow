@@ -8,12 +8,7 @@ import {
     fetchDashboardData,
   
 } from '../../reducer/adminSlice';
-import EventsManager from './EventSection';
-import PaymentRequests from './PaymentRequests';
-import PaymentsManager from './PaymentManager';
-import Alumnilist from './AlumniList';
-import AlumniDetailsPage from './AlimniDetails';
-import Sidebar from './Sidebar';
+
 import DataTable from './Datatable';
 import StatusPill from './StatusPill';
 

@@ -23,7 +23,7 @@ interface ManualPaymentState {
 }
 
 // --- API base URL ---
-const API_BASE = "http://127.0.0.1:8000/api/manual/payment";
+const API_BASE = `${import.meta.env.VITE_API_BASE_URL}/api/manual/payment`;
 
 // --- Auth headers ---
 const getAuthHeaders = () => {
@@ -51,7 +51,7 @@ export const fetchUserPayments = createAsyncThunk<Payment[], void, { rejectValue
   "manualPayment/fetchUserPayments",
   async (_, { rejectWithValue }) => {
     try {
-      const response = await axios.get(`http://127.0.0.1:8000/api/payment/all`, { headers: getAuthHeaders() });
+      const response = await axios.get(`${import.meta.env.VITE_API_BASE_URL}/payment/all`, { headers: getAuthHeaders() });
       return response.data;
     } catch (err: any) {
       return rejectWithValue(err.response?.data || { message: "Something went wrong" });
@@ -63,7 +63,7 @@ export const fetchPendingPayments = createAsyncThunk<Payment[], void, { rejectVa
   "manualPayment/fetchPendingPayments",
   async (_, { rejectWithValue }) => {
     try {
-      const response = await axios.get(`http://127.0.0.1:8000/api/payment/pending`, { headers: getAuthHeaders() });
+      const response = await axios.get(`${import.meta.env.VITE_API_BASE_URL}/payment/pending`, { headers: getAuthHeaders() });
       return response.data;
     } catch (err: any) {
       return rejectWithValue(err.response?.data || { message: "Something went wrong" });
@@ -77,7 +77,7 @@ export const updatePaymentStatus = createAsyncThunk<
   { rejectValue: { message: string } }
 >("manualPayment/updatePaymentStatus", async ({ id, status }, { rejectWithValue }) => {
   try {
-    const response = await axios.post(`http://127.0.0.1:8000/api/payment/approve/${id}`, { status }, { headers: getAuthHeaders() });
+    const response = await axios.post(`${import.meta.env.VITE_API_BASE_URL}/payment/approve/${id}`, { status }, { headers: getAuthHeaders() });
     return response.data;
   } catch (err: any) {
     return rejectWithValue(err.response?.data || { message: "Something went wrong" });

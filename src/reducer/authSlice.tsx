@@ -111,7 +111,7 @@ export const login = createAsyncThunk<
 
       // 🔹 Send token to Laravel backend
       const res = await axios.post(
-        "http://127.0.0.1:8000/api/auth/firebase",
+        `${import.meta.env.VITE_API_BASE_URL}/auth/firebase`,
         { idToken: tokenToSend, email, phone, name },
         { withCredentials: true }
       );
@@ -142,7 +142,7 @@ export const fetchUser = createAsyncThunk<User, void, { rejectValue: string }>(
     if (!token) return rejectWithValue("No token found");
 
     try {
-      const res = await axios.get("http://127.0.0.1:8000/api/auth/me", {
+      const res = await axios.get(`${import.meta.env.VITE_API_BASE_URL}/auth/me`, {
         headers: { Authorization: `Bearer ${token}` },
         withCredentials: true,
       });
@@ -166,7 +166,7 @@ export const logoutUser = createAsyncThunk<
 
   try {
     await axios.post(
-      "http://127.0.0.1:8000/api/auth/logout",
+      `${import.meta.env.VITE_API_BASE_URL}/auth/logout`,
       {},
       { headers: { Authorization: `Bearer ${token}` }, withCredentials: true }
     );

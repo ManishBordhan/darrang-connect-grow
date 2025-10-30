@@ -40,7 +40,7 @@ export const submitAlumniForm = createAsyncThunk<
 >("alumni/submitForm", async (formData, { rejectWithValue }) => {
   try {
     const token = getToken();
-    const res = await fetch("http://localhost:8000/api/alumni/register", {
+    const res = await fetch(`${import.meta.env.VITE_API_BASE_URL}/alumni/register`, {
       method: "POST",
       headers: {
         Accept: "application/json",
@@ -69,7 +69,7 @@ export const checkAlumniStatus = createAsyncThunk<
 >("alumni/checkStatus", async (_, { rejectWithValue }) => {
   try {
     const token = getToken();
-    const res = await fetch("http://localhost:8000/api/alumni/register/check", {
+    const res = await fetch(`${import.meta.env.VITE_API_BASE_URL}/alumni/register/check`, {
       method: "GET",
       headers: {
         Accept: "application/json",

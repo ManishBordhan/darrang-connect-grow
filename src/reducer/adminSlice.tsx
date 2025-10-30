@@ -13,7 +13,7 @@ interface PaginationInfo { current_page?: number; last_page?: number; per_page?:
 
 // --- API CLIENT ---
 const apiClient = axios.create({
-  baseURL: 'http://localhost:8000/api',
+  baseURL: `${import.meta.env.VITE_API_BASE_URL}`,
   headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' }
 });
 
