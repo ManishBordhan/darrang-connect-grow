@@ -5,9 +5,7 @@ import { Toaster } from "@/components/ui/toaster";
 import { Toaster as Sonner } from "@/components/ui/sonner";
 import { BrowserRouter } from "react-router-dom";
 import { Routes, Route, useNavigate } from "react-router-dom";
-import { getAuth, onAuthStateChanged } from "firebase/auth";
-import axios from "axios";
-import Header from "./components/Header.js"
+
 
 import Index from "./pages/Index";
 import NotFound from "./pages/NotFound";
