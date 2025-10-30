@@ -1,116 +1,168 @@
 import { Card, CardContent } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
+import { ArrowRightFromLine, Sparkles, Heart, Users, Award, Gem } from "lucide-react";
+import { Link } from "react-router-dom";
 
 const DonationSection = () => {
-  const impactStats = [
-    { number: "500+", label: "Students Supported" },
-    { number: "₹15.5L", label: "Scholarships Given" },
-    { number: "50+", label: "Infrastructure Projects" },
-    { number: "80+", label: "Years of Impact" }
-  ];
-
-  const donationOptions = [
+  const donationPlans = [
     {
-      amount: "₹500",
-      title: "Joining Fee",
-      description: "Help provide study materials and resources to deserving students",
-      impact: "Supports 1 student for a month"
-    },
-    {
-      amount: "₹5,000",
-      title: "Life Member",
-      description: "Contribute to campus development and facility improvements",
-      impact: "Funds classroom equipment"
-    },
-    {
-      amount: "₹10,000",
       title: "Donor Member",
-      description: "Create opportunities for underprivileged but talented students",
-      impact: "Provides semester fee support"
-    }
+      amount: "₹25,000+",
+      description: "Make a lasting contribution as a donor member.",
+      tiers: [
+        { label: "₹25,000+", benefit: "Donor member" },
+        { label: "₹50,000+", benefit: "Silver Donor member" },
+        { label: "₹1,00,000+", benefit: "Gold Donor member" },
+      ],
+      icon: Gem,
+      buttonText: "Become a Donor",
+    },
+    {
+      title: "Life Member",
+      amount: "₹5,000+",
+      description: "Become a lifetime member with recognition & impact.",
+      tiers: [
+        { label: "₹5,000+", benefit: "Life Member" },
+        { label: "₹10,000+", benefit: "Silver Life Member" },
+        { label: "₹20,000+", benefit: "Gold Life Member" },
+      ],
+      icon: Award,
+      buttonText: "Become a Life Member",
+    },
+    {
+      title: "General Member",
+      amount: "₹500",
+      description: "Join as a general member and support our mission every year.",
+      tiers: [
+        { label: "₹500", benefit: "Annual Membership" },
+        { label: "₹100/year", benefit: "Renewal Fee" },
+      ],
+      icon: Users,
+      buttonText: "Join Now",
+    },
+    {
+      title: "Custom Donation",
+      amount: "You Choose",
+      description:
+        "Give a custom amount that feels right for you. Every contribution helps build a stronger legacy.",
+      tiers: [],
+      icon: Heart,
+      isCustom: true,
+      buttonText: "Donate an Amount",
+    },
   ];
 
   return (
-    <section className="py-20 bg-beige-100 text-gray-900 transition-colors duration-300">
-      <div className="container mx-auto px-4">
-        {/* Section Header */}
-        <div className="text-center mb-16">
-          <h2 className="font-serif text-4xl md:text-5xl font-bold mb-6 text-gray-900">
-            Support Our Mission
+    <section className="py-20 bg-gradient-to-br from-indigo-50 to-purple-100 dark:from-slate-900 dark:to-slate-800 text-gray-900 dark:text-gray-200">
+      <div className="container mx-auto px-4 grid grid-cols-1 lg:grid-cols-3 gap-10">
+        {/* Left Side: Info Section */}
+        <div className="bg-violet-600 text-white p-8 rounded-2xl shadow-lg max-w-sm w-full font-sans lg:sticky lg:top-10 self-start">
+          <div className="bg-violet-700 inline-flex items-center gap-2 px-3 py-1 rounded-full text-sm font-semibold">
+            <Sparkles className="w-4 h-4" />
+            <span>Alumni Fund</span>
+          </div>
+          <h2 className="text-4xl font-bold mt-4">
+            Support to Shine Our College Better
           </h2>
-          <p className="text-xl text-gray-700 max-w-3xl mx-auto leading-relaxed">
-            Your generous contributions help us continue our tradition of excellence 
-            and provide opportunities for the next generation of students.
+          <p className="text-violet-200 mt-2 text-sm leading-6">
+            Your contribution directly aids in modernizing campus facilities,
+            funding student scholarships, and providing essential resources for
+            academic excellence.
           </p>
-        </div>
-        
-        {/* Impact Stats */}
-        <div className="grid grid-cols-2 md:grid-cols-4 gap-8 mb-16">
-          {impactStats.map((stat, index) => (
-            <div key={index} className="text-center">
-              <div className="text-3xl md:text-4xl font-bold text-yellow-600 mb-2">
-                {stat.number}
-              </div>
-              <div className="text-gray-700 text-sm uppercase tracking-wide">
-                {stat.label}
+          <button
+            className="bg-violet-500 hover:bg-violet-400 transition-colors rounded-full w-12 h-12 flex items-center justify-center mt-6"
+            aria-label="Contribute Now"
+          >
+            <ArrowRightFromLine className="w-5 h-5" />
+          </button>
+          <div className="relative bg-lime-300 text-slate-800 p-5 rounded-lg mt-8 testimonial-bubble">
+            <p className="text-sm font-medium">
+              "Together, our contributions create opportunities for the next
+              generation and ensure Darrang College remains a beacon of
+              excellence for years to come."
+            </p>
+            <div className="flex items-center gap-3 mt-4">
+              <img
+                src="https://placehold.co/40x40/E2E8F0/475569"
+                alt="Darrang College Alumni Association"
+                className="w-10 h-10 rounded-full border-2 border-slate-400"
+              />
+              <div>
+                <p className="font-bold text-sm">
+                  Darrang College Alumni Association
+                </p>
+                <p className="text-xs text-slate-600">Executive Committee</p>
               </div>
             </div>
-          ))}
+          </div>
         </div>
-        
-        {/* Donation Options */}
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-8 mb-16">
-          {donationOptions.map((option, index) => (
-            <Card key={index} className="bg-white shadow-md border border-gray-200 hover:shadow-xl transition-all duration-300">
-              <CardContent className="p-6 text-center">
-                <div className="text-3xl font-bold text-yellow-600 mb-4">
-                  {option.amount}
-                </div>
-                <h3 className="font-serif text-xl font-semibold text-gray-900 mb-3">
-                  {option.title}
-                </h3>
-                <p className="text-gray-700 text-sm mb-4 leading-relaxed">
-                  {option.description}
-                </p>
-                <div className="text-yellow-600 text-xs font-medium mb-6">
-                  {option.impact}
-                </div>
-                <Button 
-                  variant="hero" 
-                  size="sm" 
-                  className="w-full bg-purple-600 text-white hover:bg-purple-700 transition-transform duration-300 hover:scale-105"
-                >
-                  Donate Now
-                </Button>
-              </CardContent>
-            </Card>
-          ))}
-        </div>
-        
-        {/* Custom Amount */}
-        <div className="text-center">
-          <Card className="bg-white shadow-md border border-gray-200 max-w-md mx-auto hover:shadow-xl transition-all duration-300">
-            <CardContent className="p-8">
-              <h3 className="font-serif text-2xl font-semibold text-gray-900 mb-4">
-                Custom Donation
-              </h3>
-              <p className="text-gray-700 text-sm mb-6">
-                Choose your own amount to support the cause closest to your heart
-              </p>
-              <Button 
-                variant="hero" 
-                size="lg" 
-                className="w-full bg-purple-600 text-white hover:bg-purple-700 transition-transform duration-300 hover:scale-105 text-lg py-4"
-              >
-                Make Custom Donation
-              </Button>
-            </CardContent>
-          </Card>
-          
-          <div className="mt-8 text-center">
-            <p className="text-gray-500 text-sm">
-              All donations are secure and tax-deductible. You will receive a certificate of appreciation for your contribution.
+
+        {/* Right Side: Donation Plans */}
+        <div className="lg:col-span-2">
+          <div className="text-center lg:text-left mb-10">
+            <h1 className="text-2xl md:text-3xl font-bold dark:text-white">
+              Choose Your Way to Give
+            </h1>
+            <p className="mt-2 text-slate-500 dark:text-slate-400">
+              For every donation, you will receive a certificate to honor your
+              contribution.
             </p>
+          </div>
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+            {donationPlans.map((plan, index) => (
+              <Card
+                key={index}
+                className={`relative flex flex-col z-10 rounded-2xl transition-all duration-300 text-gray-900
+                  bg-gradient-to-br from-white to-purple-50 dark:from-slate-800 dark:to-slate-900
+                  shadow-lg hover:shadow-xl hover:-translate-y-1
+                  ${ plan.isCustom
+                    ? 'border-2 border-dashed border-purple-400 dark:border-purple-600'
+                    : 'border-2 border-purple-300 hover:border-purple-400 dark:border-purple-800 dark:hover:border-purple-600'
+                  }`}
+              >
+                <CardContent className="p-6 text-center flex flex-col flex-grow">
+                  <div className="flex items-center justify-center mb-6">
+                    <div className="flex items-center gap-2 px-3 py-2 rounded-full bg-purple-100 dark:bg-purple-900/50 text-purple-800 dark:text-purple-300 shadow-md">
+                      <plan.icon className="w-5 h-5" />
+                      <h3 className="text-lg font-semibold">{plan.title}</h3>
+                    </div>
+                  </div>
+                  <div className="text-4xl font-bold text-purple-700 dark:text-purple-400 mb-4">
+                    {plan.amount}
+                  </div>
+                  <p className="text-slate-600 dark:text-slate-300 text-base mb-6">
+                    {plan.description}
+                  </p>
+
+                  {plan.tiers.length > 0 && (
+                    <ul className="space-y-3 text-sm text-gray-700 dark:text-gray-300">
+                      {plan.tiers.map((tier, i) => (
+                        <li
+                          key={i}
+                          className="flex flex-col items-center border border-gray-200 dark:border-gray-700 rounded-lg py-2 px-4 bg-white/70 dark:bg-slate-800/50 backdrop-blur-sm"
+                        >
+                          <span className="font-semibold text-purple-600 dark:text-purple-400">
+                            {tier.label}
+                          </span>
+                          <span className="text-gray-600 dark:text-gray-400">{tier.benefit}</span>
+                        </li>
+                      ))}
+                    </ul>
+                  )}
+
+                  <div className="flex-grow"></div>
+
+                  <Link to={"/registration"} className="mt-8">
+                    <Button
+                      size="lg"
+                      className="w-full text-base py-3 transition-transform duration-300 hover:scale-105 shadow-md bg-purple-600 text-white hover:bg-purple-700 dark:bg-purple-700 dark:hover:bg-purple-800"
+                    >
+                      {plan.buttonText}
+                    </Button>
+                  </Link>
+                </CardContent>
+              </Card>
+            ))}
           </div>
         </div>
       </div>
@@ -119,3 +171,4 @@ const DonationSection = () => {
 };
 
 export default DonationSection;
+
