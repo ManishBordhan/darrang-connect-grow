@@ -19,6 +19,8 @@ export const fetchAllEvents = createAsyncThunk(
           error.response?.data ||
           { message: error.message }
         );
+
+        
       }
       return rejectWithValue({ message: 'Unknown error occurred' });
     }
