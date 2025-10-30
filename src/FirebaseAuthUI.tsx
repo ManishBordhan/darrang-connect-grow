@@ -104,7 +104,7 @@ function FirebaseAuthUI() {
             // 📞 PHONE LOGIN FLOW
             if (loginMethod === "phone") {
               try {
-                const res = await axios.post("/api/check-phone", {
+                const res = await axios.post("http://127.0.0.1:8000/api/check-phone", {
                   phone: user.phoneNumber,
                 });
 
@@ -137,7 +137,7 @@ function FirebaseAuthUI() {
             // 📧 GOOGLE OR EMAIL LOGIN FLOW
             if (loginMethod === "google" || loginMethod === "email") {
               try {
-                const res = await axios.post("/api/check-phone", {
+                const res = await axios.post("http://127.0.0.1:8000/api/check-phone", {
                   email: user.email,
                 });
 

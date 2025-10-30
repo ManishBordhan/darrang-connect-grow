@@ -1,42 +1,61 @@
 import { createSlice, createAsyncThunk } from '@reduxjs/toolkit';
 import axios from 'axios';
 
-// --- Async thunk to fetch all events
+// --- Async thunk to fetch all public events
 export const fetchAllEvents = createAsyncThunk(
   'events/fetchAll',
   async (_, { rejectWithValue }) => {
     try {
-      const response = await axios.get('http://127.0.0.1:8000/api/public/events'); // your Laravel endpoint
-      return response.data; // assuming response.data is the array of events
+      // 👇 You can change this URL when hosting
+      const response = await axios.get('http://127.0.0.1:8000/api/public/events');
+      return response.data; // expecting an array of events
     } catch (error) {
-      return rejectWithValue(error.response?.data || 'Error fetching events');
+      if (axios.isAxiosError(error)) {
+        // Extract backend message safely
+        return rejectWithValue(
+          error.response?.data?.message ||
+          error.response?.data ||
+          { message: error.message }
+        );
+      }
+      return rejectWithValue({ message: 'Unknown error occurred' });
     }
   }
 );
 
-// --- Slice
+// --- Events slice
 const publicEventsSlice = createSlice({
   name: 'events',
   initialState: {
-    list: [],
-    status: 'idle', // idle | loading | succeeded | failed
-    error: null,
+    list: [],         // stores event data
+    status: 'idle',   // idle | loading | succeeded | failed
+    error: null as string | null, // stores error messages
   },
   reducers: {},
   extraReducers: (builder) => {
     builder
-      // Fetch all events
+      // ⏳ Loading state
       .addCase(fetchAllEvents.pending, (state) => {
         state.status = 'loading';
         state.error = null;
       })
+
+      // ✅ Success state
       .addCase(fetchAllEvents.fulfilled, (state, action) => {
         state.status = 'succeeded';
-        state.list = action.payload; // store events
+        state.list = action.payload;
       })
+
+      // ❌ Error state
       .addCase(fetchAllEvents.rejected, (state, action) => {
         state.status = 'failed';
-        state.error = action.payload;
+
+        // Ensure error is a string (avoid object render crash)
+        if (typeof action.payload === 'object' && action.payload !== null) {
+          state.error = (action.payload as any).message || JSON.stringify(action.payload);
+        } else {
+          state.error = (action.payload as string) || 'Something went wrong';
+        }
       });
   },
 });
