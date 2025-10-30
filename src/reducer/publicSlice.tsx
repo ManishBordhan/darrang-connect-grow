@@ -7,7 +7,7 @@ export const fetchAllEvents = createAsyncThunk(
   async (_, { rejectWithValue }) => {
     try {
       // 👇 You can change this URL when hosting
-      const response = await axios.get('http://127.0.0.1:8000/api/public/events');
+      const response = await axios.get('https://dorrangcollege.onrender.com/api/public/events');
       return response.data; // expecting an array of events
     } catch (error) {
       if (axios.isAxiosError(error)) {
